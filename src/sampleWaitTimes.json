@@ -1,0 +1,528 @@
+[
+  {
+    "name": "Stitch's Great Escape! - Temporarily Closed",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T00:00:00-05:00",
+      "closingTime": "2018-12-18T23:59:00-05:00",
+      "type": "Closed"
+    }
+  },
+  {
+    "name": "Monsters, Inc. Laugh Floor",
+    "waittime": 25,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T10:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Walt Disney World Railroad - Frontierland",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Walt Disney's Enchanted Tiki Room",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T17:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Sorcerers of the Magic Kingdom",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "The Barnstormer",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Walt Disney World Railroad - Fantasyland",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Casey Jr. Splash 'N' Soak Station",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Cinderella Castle",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Under the Sea - Journey of The Little Mermaid",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Enchanted Tales with Belle",
+    "waittime": 0,
+    "active": false,
+    "fastPass": true,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Seven Dwarfs Mine Train ",
+    "waittime": 35,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "A Pirate's Adventure - Treasures of the Seven Seas",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T12:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Allergy-Friendly Trick-Or-Treat Experience – Mickey's Not-So-Scary Halloween Party",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed"
+  },
+  {
+    "name": "Treat Locations for Mickey's Not-So-Scary Halloween Party",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed"
+  },
+  {
+    "name": "Pirate and Princess Adventures at Walt Disney World",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Holiday Treats Locations - Mickey's Very Merry Christmas Party",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed"
+  },
+  {
+    "name": "Pirates at Walt Disney World Resort",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Pirates at Walt Disney World",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Horses - Disney Animals",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T10:15:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Play Disney Parks",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Astro Orbiter",
+    "waittime": 15,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Big Thunder Mountain Railroad",
+    "waittime": 20,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Buzz Lightyear's Space Ranger Spin",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Prince Charming Regal Carrousel",
+    "waittime": 5,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Dumbo the Flying Elephant",
+    "waittime": 10,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Frontierland Shootin' Arcade",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "\"it's a small world\"",
+    "waittime": 10,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Jungle Cruise",
+    "waittime": 20,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Liberty Square Riverboat",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Refurbishment",
+    "schedule": {
+      "openingTime": "2018-12-18T00:00:00-05:00",
+      "closingTime": "2018-12-18T23:59:00-05:00",
+      "type": "Refurbishment"
+    }
+  },
+  {
+    "name": "Mad Tea Party",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Main Street Vehicles",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T12:30:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Mickey's PhilharMagic",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Peter Pan's Flight",
+    "waittime": 35,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Pirates of the Caribbean",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Space Mountain",
+    "waittime": 30,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Splash Mountain",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Swiss Family Treehouse",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Haunted Mansion",
+    "waittime": 15,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "The Magic Carpets of Aladdin",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "The Many Adventures of Winnie the Pooh",
+    "waittime": 5,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Tom Sawyer Island",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Refurbishment",
+    "schedule": {
+      "openingTime": "2018-12-18T00:00:00-05:00",
+      "closingTime": "2018-12-18T23:59:00-05:00",
+      "type": "Refurbishment"
+    }
+  },
+  {
+    "name": "Tomorrowland Speedway",
+    "waittime": 15,
+    "active": true,
+    "fastPass": true,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Tomorrowland Transit Authority PeopleMover",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Walt Disney World Railroad - Main Street, U.S.A.",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating"
+  },
+  {
+    "name": "Walt Disney's Carousel of Progress",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "Country Bear Jamboree",
+    "waittime": 0,
+    "active": true,
+    "fastPass": false,
+    "status": "Operating",
+    "schedule": {
+      "openingTime": "2018-12-18T11:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  },
+  {
+    "name": "The Hall of Presidents",
+    "waittime": 0,
+    "active": false,
+    "fastPass": false,
+    "status": "Closed",
+    "schedule": {
+      "openingTime": "2018-12-18T09:00:00-05:00",
+      "closingTime": "2018-12-18T18:00:00-05:00",
+      "type": "Operating"
+    }
+  }
+]

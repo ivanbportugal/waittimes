@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Magic Kingdom - Walt Disney World Florida",
+    "id": "WaltDisneyWorldMagicKingdom",
+    "location": {
+      "lat": 28.3852,
+      "lon": -81.5639
+    },
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Epcot - Walt Disney World Florida",
+    "id": "WaltDisneyWorldEpcot",
+    "location": {
+      "lat": 28.3747,
+      "lon": -81.5494
+    },
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Hollywood Studios - Walt Disney World Florida",
+    "id": "WaltDisneyWorldHollywoodStudios",
+    "location": {
+      "lat": 28.3575,
+      "lon": -81.5582
+    },
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Animal Kingdom - Walt Disney World Florida",
+    "id": "WaltDisneyWorldAnimalKingdom",
+    "location": {
+      "lat": 28.3553,
+      "lon": -81.5901
+    },
+    "timezone": "America/New_York"
+  },
+  {
+    "name": "Magic Kingdom - Disneyland Resort",
+    "id": "DisneylandResortMagicKingdom",
+    "location": {
+      "lat": 33.810109,
+      "lon": -117.918971
+    },
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "California Adventure - Disneyland Resort",
+    "id": "DisneylandResortCaliforniaAdventure",
+    "location": {
+      "lat": 33.80872,
+      "lon": -117.91899
+    },
+    "timezone": "America/Los_Angeles"
+  },
+  {
+    "name": "Magic Kingdom - Disneyland Paris",
+    "id": "DisneylandParisMagicKingdom",
+    "location": {
+      "lat": 48.870321,
+      "lon": 2.779672
+    },
+    "timezone": "Europe/Paris"
+  },
+  {
+    "name": "Walt Disney Studios - Disneyland Paris",
+    "id": "DisneylandParisWaltDisneyStudios",
+    "location": {
+      "lat": 48.868271,
+      "lon": 2.780719
+    },
+    "timezone": "Europe/Paris"
+  },
+  {
+    "name": "Magic Kingdom - Shanghai Disney Resort",
+    "id": "ShanghaiDisneyResortMagicKingdom",
+    "location": {
+      "lat": 31.1433,
+      "lon": 121.658
+    },
+    "timezone": "Asia/Shanghai"
+  },
+  {
+    "name": "Tokyo Disney Resort - Magic Kingdom",
+    "id": "TokyoDisneyResortMagicKingdom",
+    "location": {
+      "lat": 35.634848,
+      "lon": 139.879295
+    },
+    "timezone": "Asia/Tokyo"
+  },
+  {
+    "name": "Tokyo Disney Resort - Disney Sea",
+    "id": "TokyoDisneyResortDisneySea",
+    "location": {
+      "lat": 35.627055,
+      "lon": 139.889097
+    },
+    "timezone": "Asia/Tokyo"
+  },
+  {
+    "name": "Hong Kong Disneyland",
+    "id": "HongKongDisneyland",
+    "location": {
+      "lat": 22.3132,
+      "lon": 114.0445
+    },
+    "timezone": "Asia/Hong_Kong"
+  }
+]
