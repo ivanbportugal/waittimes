@@ -12,7 +12,11 @@ export default new Vuex.Store({
   state: {
     parkList: [],
     waitTimes: [],
-    favoriteRides: {}
+    favoriteRides: {},
+    currentPark: {
+      id: undefined,
+      name: undefined
+    }
   },
   mutations: {
     'SET_PARK_LIST'(state, parkList) {
@@ -20,6 +24,38 @@ export default new Vuex.Store({
     },
     'SET_WAIT_TIMES'(state, waitTimes) {
       state.waitTimes = waitTimes
+    },
+    'SET_FAVORITE'(state, params) {
+      const parkId = params.parkId;
+      const ride = params.ride;
+      if (!state.favoriteRides[parkId]) {
+        let newPark = {}
+        newPark[parkId] = []
+        state.favoriteRides = Object.assign({}, state.favoriteRides, newPark)
+      }
+
+      // Don't add a ride again
+      if (!state.favoriteRides[parkId].some(favRide => favRide.name == ride.name)) { 
+        state.favoriteRides[parkId].push(ride);
+      }
+
+      state.favoriteRides = Object.assign({}, state.favoriteRides)
+    },
+    'UNSET_FAVORITE'(state, params) {
+      const parkId = params.parkId;
+      const ride = params.ride;
+      if (state.favoriteRides[parkId]) {
+        for(var i = 0; i < state.favoriteRides[parkId].length; i++) {
+          if(state.favoriteRides[parkId][i].name === ride.name) {
+            state.favoriteRides[parkId].splice(i, 1);
+            state.favoriteRides = Object.assign({}, state.favoriteRides)
+            break;
+          }
+        }
+      }
+    },
+    'SET_CURRENT_PARK'(state, currentPark) {
+      state.currentPark = currentPark;
     }
   },
   actions: {
@@ -35,7 +71,8 @@ export default new Vuex.Store({
         })
       }
     },
-    loadWaitTimes( {commit, parkId} ) {
+    loadWaitTimes( {commit}, params ) {
+      const parkId = params.park;
       console.log('Loading wait times for parkId ' + parkId);
       if (process.env.NODE_ENV === 'development') {
         commit('SET_WAIT_TIMES', sampleWaitTimes)
@@ -47,6 +84,15 @@ export default new Vuex.Store({
           console.log('Could not get wait times for park ' + parkId + ': ', err)
         })
       }
+    },
+    favorite( {commit}, params) {
+      commit('SET_FAVORITE', params)
+    },
+    unFavorite( {commit}, params) {
+      commit('UNSET_FAVORITE', params)
+    },
+    setCurrentPark( {commit}, currentPark) {
+      commit('SET_CURRENT_PARK', currentPark)
     }
   }
 })

@@ -3,7 +3,9 @@
     <md-app md-mode="reveal">
 
       <md-app-toolbar class="md-primary">
-        <span class="md-title">Heavy Waiter</span>
+        <span class="md-title">Heavy Waiter
+          <span v-if="nowWaiting"> - {{ nowWaiting.name }}</span>
+        </span>
 
         <div class="md-toolbar-section-end">
           <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
@@ -53,14 +55,25 @@
 </style>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     name: 'HeavyWaiter',
     data: () => ({
-      menuVisible: false
+      menuVisible: false,
+      nowWaiting: undefined
     }),
     methods: {
       toggleMenu () {
         this.menuVisible = !this.menuVisible
+      }
+    },
+    computed: mapState([
+      'currentPark',
+    ]),
+    watch: {
+      currentPark(newPark, oldPark) {
+        this.nowWaiting = newPark.currentPark
       }
     }
   }
