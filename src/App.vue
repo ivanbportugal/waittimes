@@ -3,7 +3,7 @@
     <md-app md-mode="reveal">
 
       <md-app-toolbar class="md-primary">
-        <span class="md-title">Heavy Waiter
+        <span class="md-title">Jump In Line
           <span v-if="nowWaiting"> - {{ nowWaiting.name }}</span>
         </span>
 
