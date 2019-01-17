@@ -1,5 +1,11 @@
 <template>
+
   <div class="rides-container">
+
+    <div>
+      <md-button @click="$router.push('/')"><md-icon class="md-primary">arrow_back</md-icon>&nbsp;&nbsp;Back to Parks</md-button>
+      <h3 v-if="visiblePark">{{ visiblePark.name }}</h3>
+    </div>
 
     <!-- Favorite list -->
     <span class="md-subheading" v-if="favoriteRides[this.park] && favoriteRides[this.park].length > 0">Favorites</span>
@@ -115,7 +121,8 @@ export default {
   data: () => ({
     showSnackbar: false,
     snackbarContent: '',
-    waitTimesMinusFavorites: []
+    waitTimesMinusFavorites: [],
+    visiblePark: undefined
   }),
   methods: {
     favoriteClicked: function(ride) {
@@ -142,16 +149,20 @@ export default {
   computed: mapState([
     'waitTimes',
     'parkList',
-    'favoriteRides'
+    'favoriteRides',
+    'currentPark'
   ]),
   watch: {
-    parkList(newList, oldList) {
-
-      // Populate the app with the current park's details do it can show up in the title or anywhere else
-      let entireParkDetails = newList.find(park => park.id === this.park)
-      this.$store.dispatch('setCurrentPark', { currentPark: entireParkDetails })
-    },
+    // parkList(newList, oldList) {
+    //   // Populate the app with the current park's details do it can show up in the title or anywhere else
+    //   console.log('park list updated (view)')
+    //   this.visiblePark = newList.find(park => park.id === this.park)
+    //   this.$store.dispatch('setCurrentPark', { currentPark: this.visiblePark })
+    // },
     waitTimes(newWaits, oldWaits) {
+      console.log('wait times updated (view)')
+      this.visiblePark = this.$store.state.parkList.find(park => park.id === this.park)
+      this.$store.dispatch('setCurrentPark', { currentPark: this.visiblePark })
       this.waitTimesMinusFavorites = JSON.parse(JSON.stringify(newWaits))
     },
     favoriteRides(newFavs, oldFavs) {

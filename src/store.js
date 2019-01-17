@@ -20,10 +20,10 @@ export default new Vuex.Store({
   },
   mutations: {
     'SET_PARK_LIST'(state, parkList) {
-      state.parkList = parkList
+      state.parkList = JSON.parse(JSON.stringify(parkList))
     },
     'SET_WAIT_TIMES'(state, waitTimes) {
-      state.waitTimes = waitTimes
+      state.waitTimes = JSON.parse(JSON.stringify(waitTimes))
     },
     'SET_FAVORITE'(state, params) {
       const parkId = params.parkId;
@@ -55,7 +55,7 @@ export default new Vuex.Store({
       }
     },
     'SET_CURRENT_PARK'(state, currentPark) {
-      state.currentPark = currentPark;
+      state.currentPark = Object.assign({}, currentPark)
     }
   },
   actions: {

@@ -3,9 +3,7 @@
     <md-app md-mode="reveal">
 
       <md-app-toolbar class="md-primary">
-        <span class="md-title">Jump In Line
-          <span v-if="nowWaiting"> - {{ nowWaiting.name }}</span>
-        </span>
+        <span class="md-title">Jump In Line</span>
 
         <div class="md-toolbar-section-end">
           <md-button class="md-icon-button" @click="menuVisible = !menuVisible">
@@ -44,6 +42,10 @@
 </template>
 
 <style lang="scss">
+  .md-toolbar.md-theme-default.md-primary {
+    background-color: #6fcdbd !important;
+  }
+
   .page-container, .md-app {
     min-height: 100vh;
   }
@@ -52,28 +54,24 @@
     padding: 20px;
     text-align: center;
   }
+
+  .md-app-content .md-card {
+    margin-left: 0px !important;
+  }
 </style>
 
 <script>
   import { mapState } from 'vuex'
+import { setTimeout } from 'timers';
 
   export default {
     name: 'HeavyWaiter',
     data: () => ({
-      menuVisible: false,
-      nowWaiting: undefined
+      menuVisible: false
     }),
     methods: {
       toggleMenu () {
         this.menuVisible = !this.menuVisible
-      }
-    },
-    computed: mapState([
-      'currentPark',
-    ]),
-    watch: {
-      currentPark(newPark, oldPark) {
-        this.nowWaiting = newPark.currentPark
       }
     }
   }

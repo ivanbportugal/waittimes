@@ -1,23 +1,27 @@
 <template>
-  <div class="park-list-container">
+  <div>
+
+    <h1 class="headline">Select a park.</h1>
     
-    <div class="park" v-for="park in parkList" :key="park.id">
-      <md-card class="" md-theme="black-card" md-with-hover>
-        <md-ripple>
-          <md-card-header>
-            <div class="md-title">{{ park.name }}</div>
-            <div class="md-subhead">{{ park.timezone }}</div>
-          </md-card-header>
+    <div class="park-list-container">
+      <div class="park" v-for="park in parkList" :key="park.id">
+        <md-card class="" md-theme="black-card" md-with-hover>
+          <md-ripple>
+            <md-card-header>
+              <div class="md-title">{{ park.name }}</div>
+              <div class="md-subhead">{{ park.timezone }}</div>
+            </md-card-header>
 
-          <md-card-content>
-            TBD description ({{ park.id }})
-          </md-card-content>
+            <md-card-content>
+              TBD description ({{ park.id }})
+            </md-card-content>
 
-          <md-card-actions>
-            <md-button @click="$router.push('/rides/' + park.id);">Wait Times</md-button>
-          </md-card-actions>
-        </md-ripple>
-      </md-card>
+            <md-card-actions>
+              <md-button @click="$router.push('/rides/' + park.id);">Wait Times</md-button>
+            </md-card-actions>
+          </md-ripple>
+        </md-card>
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +45,9 @@
         margin-bottom: 40px;
       }
     }
+  }
+  .headline, .subheadline {
+    text-align: center;
   }
 </style>
 
