@@ -33,7 +33,7 @@
       <md-app-content>
         <router-view/>
         <md-content class="footer">
-          <span>Powered by <a target="_BLANK" href="https://github.com/cubehouse/themeparks">Themeparks</a></span>
+          <span>Powered by <a target="_BLANK" rel="noreferrer" href="https://github.com/cubehouse/themeparks">Themeparks</a></span>
         </md-content>
       </md-app-content>
 
@@ -62,7 +62,7 @@
 
 <script>
   import { mapState } from 'vuex'
-import { setTimeout } from 'timers';
+  import { setTimeout } from 'timers'
 
   export default {
     name: 'HeavyWaiter',

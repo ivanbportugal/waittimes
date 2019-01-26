@@ -3,9 +3,35 @@
   <div class="rides-container">
 
     <div>
-      <md-button @click="$router.push('/')"><md-icon class="md-primary">arrow_back</md-icon>&nbsp;&nbsp;Back to Parks</md-button>
+      <div class="flex-title">
+        <md-button @click="$router.push('/')"><md-icon class="md-primary">arrow_back</md-icon>&nbsp;&nbsp;Back to Parks</md-button>
+        <md-button class="sort-button" @click="showSortDialog=true"><md-icon class="md-primary">sort</md-icon>&nbsp;&nbsp;Sort</md-button>
+      </div>
       <h3 v-if="visiblePark">{{ visiblePark.name }}</h3>
     </div>
+
+    <!-- Modal -->
+    <md-dialog :md-active.sync="showSortDialog">
+      <md-dialog-title>Sort</md-dialog-title>
+
+      <md-dialog-content>
+        <md-field>
+          <label for="sortBy">Field</label>
+          <md-select v-model="sortModel.field" name="sortBy">
+            <md-option value="name">Ride Name</md-option>
+            <md-option value="waittime">Wait Time</md-option>
+          </md-select>
+          
+        </md-field>
+
+        <md-radio v-model="sortModel.asc" :value="true">Ascending</md-radio>
+        <md-radio v-model="sortModel.asc" :value="false">Descending</md-radio>
+      </md-dialog-content>
+
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="showSortDialog = false; sortWaitTimes()">Close</md-button>
+      </md-dialog-actions>
+    </md-dialog>
 
     <!-- Favorite list -->
     <span class="md-subheading" v-if="favoriteRides[this.park] && favoriteRides[this.park].length > 0">Favorites</span>
@@ -94,6 +120,10 @@
   .fav-list {
     overflow: hidden;
   }
+  .flex-title {
+    display: flex;
+    justify-content: space-between;
+  }
   div[class*="favorite"], .md-triple-line {
     transition: all 500ms;
   }
@@ -107,7 +137,6 @@
     transform: translateX(0);
     max-height: auto;
   }
-  
 </style>
 
 
@@ -122,7 +151,8 @@ export default {
     showSnackbar: false,
     snackbarContent: '',
     waitTimesMinusFavorites: [],
-    visiblePark: undefined
+    visiblePark: undefined,
+    showSortDialog: false
   }),
   methods: {
     favoriteClicked: function(ride) {
@@ -130,6 +160,9 @@ export default {
     },
     unFavoriteClicked: function(ride) {
       this.$store.dispatch('unFavorite', { parkId: this.park, ride: ride })
+    },
+    sortWaitTimes: function() {
+      this.$store.dispatch('setSortModel', this.sortModel)
     }
   },
   mounted() {
@@ -146,24 +179,24 @@ export default {
       this.showSnackbar = true;
     }
   },
-  computed: mapState([
-    'waitTimes',
-    'parkList',
-    'favoriteRides',
-    'currentPark'
-  ]),
+  computed: {
+    ...mapState([
+      'waitTimes',
+      'parkList',
+      'favoriteRides',
+      'currentPark',
+      'sortModel'
+    ]),
+  },
   watch: {
-    // parkList(newList, oldList) {
-    //   // Populate the app with the current park's details do it can show up in the title or anywhere else
-    //   console.log('park list updated (view)')
-    //   this.visiblePark = newList.find(park => park.id === this.park)
-    //   this.$store.dispatch('setCurrentPark', { currentPark: this.visiblePark })
-    // },
     waitTimes(newWaits, oldWaits) {
       console.log('wait times updated (view)')
       this.visiblePark = this.$store.state.parkList.find(park => park.id === this.park)
       this.$store.dispatch('setCurrentPark', { currentPark: this.visiblePark })
       this.waitTimesMinusFavorites = JSON.parse(JSON.stringify(newWaits))
+
+      this.snackbarContent = 'wait times updated'
+      this.showSnackbar = true;
     },
     favoriteRides(newFavs, oldFavs) {
 

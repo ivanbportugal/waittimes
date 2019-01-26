@@ -16,6 +16,10 @@ export default new Vuex.Store({
     currentPark: {
       id: undefined,
       name: undefined
+    },
+    sortModel: {
+      field: undefined,
+      asc: true
     }
   },
   mutations: {
@@ -56,6 +60,12 @@ export default new Vuex.Store({
     },
     'SET_CURRENT_PARK'(state, currentPark) {
       state.currentPark = Object.assign({}, currentPark)
+    },
+    'SET_SORT'(state, newSortModel) {
+      state.sortModel = Object.assign({}, newSortModel)
+
+      // Also sort the wait times
+      state.waitTimes = [...orderList(state.waitTimes, state.sortModel)]
     }
   },
   actions: {
@@ -93,6 +103,33 @@ export default new Vuex.Store({
     },
     setCurrentPark( {commit}, currentPark) {
       commit('SET_CURRENT_PARK', currentPark)
-    }
+    },
+    setSortModel( {commit}, newSortModel) {
+      commit('SET_SORT', newSortModel)
+    },
   }
 })
+
+function orderList(rideList, sortModel) {
+  if (!sortModel.field) {
+    return rideList
+  } else {
+    if (sortModel.field === 'name') {
+      return rideList.sort((a, b) => {
+        if (sortModel.asc) {
+          return (a.name < b.name) ? -1 : (a.name > b.name) ? 1 : 0;
+        } else {
+          return (b.name < a.name) ? -1 : (b.name > a.name) ? 1 : 0;
+        }
+      });
+    } else if (sortModel.field === 'waittime') {
+      return rideList.sort((a, b) => {
+        if (sortModel.asc) {
+          return b.waittime - a.waittime
+        } else {
+          return a.waittime - b.waittime
+        }
+      });
+    }
+  }
+}
