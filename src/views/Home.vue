@@ -13,11 +13,12 @@
             </md-card-header>
 
             <md-card-content>
-              TBD description ({{ park.id }})
+              Currently in {{ park.timezone }}
+              ({{ park.id }})
             </md-card-content>
 
             <md-card-actions>
-              <md-button @click="$router.push('/rides/' + park.id);">Wait Times</md-button>
+              <md-button class="action-button md-raised md-primary" @click="$router.push('/rides/' + park.id);">See Wait Times</md-button>
             </md-card-actions>
           </md-ripple>
         </md-card>
@@ -48,6 +49,10 @@
   }
   .headline, .subheadline {
     text-align: center;
+  }
+  .action-button.md-button.md-raised {
+    background-color: #448aff;
+    color: #fff;
   }
 </style>
 

@@ -13,6 +13,7 @@ export default new Vuex.Store({
     parkList: [],
     waitTimes: [],
     favoriteRides: {},
+    isLoading: false,
     currentPark: {
       id: undefined,
       name: undefined
@@ -27,7 +28,7 @@ export default new Vuex.Store({
       state.parkList = JSON.parse(JSON.stringify(parkList))
     },
     'SET_WAIT_TIMES'(state, waitTimes) {
-      state.waitTimes = JSON.parse(JSON.stringify(waitTimes))
+      state.waitTimes = [...orderList(waitTimes, state.sortModel)]
     },
     'SET_FAVORITE'(state, params) {
       const parkId = params.parkId;
@@ -66,6 +67,9 @@ export default new Vuex.Store({
 
       // Also sort the wait times
       state.waitTimes = [...orderList(state.waitTimes, state.sortModel)]
+    },
+    'SET_LOADING'(state, isLoading) {
+      state.isLoading = isLoading
     }
   },
   actions: {
@@ -87,10 +91,13 @@ export default new Vuex.Store({
       if (process.env.NODE_ENV === 'development') {
         commit('SET_WAIT_TIMES', sampleWaitTimes)
       } else {
+        commit('IS_LOADING', true)
         let params = { parkName: parkId };
         axios.get('/api/waits', { params: params }).then(res => res.data).then(waitTimes => {
           commit('SET_WAIT_TIMES', waitTimes)
+          commit('IS_LOADING', false)
         }).catch(err => {
+          commit('IS_LOADING', false)
           console.log('Could not get wait times for park ' + parkId + ': ', err)
         })
       }
@@ -111,8 +118,20 @@ export default new Vuex.Store({
 })
 
 function orderList(rideList, sortModel) {
+  // Ignore closed rides
+  rideList = rideList.filter(ride => ride.status.toLowerCase() !== 'closed')
+
+  // remove quotes
+  for (let ride of rideList) {
+    if (ride.name) {
+      ride.name = ride.name.split('"').join('').trim()
+      ride.name = ride.name.charAt(0).toUpperCase() + ride.name.slice(1);
+    }
+  }
   if (!sortModel.field) {
-    return rideList
+    return rideList.sort((a, b) => {
+      return a.active ? 1 : -1;
+    });
   } else {
     if (sortModel.field === 'name') {
       return rideList.sort((a, b) => {

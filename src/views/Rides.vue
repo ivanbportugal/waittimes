@@ -33,26 +33,46 @@
       </md-dialog-actions>
     </md-dialog>
 
+    <md-empty-state
+      v-if="isLoading"
+      md-rounded
+      md-icon="access_time"
+      md-label="Wait Some More"
+      md-description="Seems ironic that you are waiting for wait times to load...">
+    </md-empty-state>
+
+    <md-empty-state
+      v-if="!hasNotFetchedDataYet && !isLoading && waitTimes.length == 0"
+      md-rounded
+      md-icon="star"
+      md-label="Congratulations!"
+      md-description="Looks like you WILL be the heavy wait champion of the world, since there are no active rides at this park...">
+    </md-empty-state>
+
     <!-- Favorite list -->
     <span class="md-subheading" v-if="favoriteRides[this.park] && favoriteRides[this.park].length > 0">Favorites</span>
 
-    <md-list class="md-triple-line fav-list" v-if="favoriteRides[this.park] && favoriteRides[this.park].length > 0">
+    <md-list class="fav-list" v-if="favoriteRides[this.park] && favoriteRides[this.park].length > 0">
 
       <transition-group tag="div"
           name="favorite">
 
         <div v-for="ride in favoriteRides[this.park]" :key="ride.name" class="favorite-item">
 
-          <md-list-item>
-            <md-avatar class="md-avatar-icon md-large md-accent">
+          <md-list-item md-expand>
+            <md-avatar class="md-avatar-icon md-accent">
               <md-ripple>{{ ride.waittime }}</md-ripple>
             </md-avatar>
 
-            <div class="md-list-item-text">
-              <span>{{ ride.name }}</span>
-              <span>Status: {{ ride.status }}</span>
-              <p>FastPass Available: {{ ride.fastPass }}. Active: {{ ride.active }}</p>
-            </div>
+            <span class="md-list-item-text">{{ ride.name }}</span>
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">Status: {{ ride.status }}</md-list-item>
+              <md-list-item class="md-inset">FastPass Available: {{ ride.fastPass }}</md-list-item>
+              <md-list-item class="md-inset">Active: {{ ride.active }}</md-list-item>
+            </md-list>
+
+            <md-chip class="md-accent" v-if="ride.fastPass">FP</md-chip>
+            <md-chip v-if="!ride.active">Not Active</md-chip>
 
             <md-button class="md-icon-button md-list-action" @click="unFavoriteClicked(ride)">
               <md-icon class="md-primary">star</md-icon>
@@ -68,32 +88,28 @@
 
 
     <!-- Normal List -->
-    <md-empty-state
-      v-if="waitTimes.length == 0"
-      md-rounded
-      md-icon="access_time"
-      md-label="Wait Some More"
-      md-description="Seems ironic that you are waiting for wait times to load...">
-    </md-empty-state>
-    <span class="md-subheading">All Rides</span>
-
-    <md-list class="md-triple-line">
+    <span class="md-subheading">All Open Rides</span>
+    <md-list>
 
       <transition-group tag="div"
           name="favorite">
 
         <div v-for="ride in waitTimesMinusFavorites" :key="ride.name" class="favorite-item">
 
-          <md-list-item>
-            <md-avatar class="md-avatar-icon md-large md-accent">
+          <md-list-item md-expand>
+            <md-avatar class="md-avatar-icon md-accent">
               <md-ripple>{{ ride.waittime }}</md-ripple>
             </md-avatar>
 
-            <div class="md-list-item-text">
-              <span>{{ ride.name }}</span>
-              <span>Status: {{ ride.status }}</span>
-              <p>FastPass Available: {{ ride.fastPass }}. Active: {{ ride.active }}</p>
-            </div>
+            <span class="md-list-item-text">{{ ride.name }}</span>
+            <md-list slot="md-expand">
+              <md-list-item class="md-inset">Status: {{ ride.status }}</md-list-item>
+              <md-list-item class="md-inset">FastPass Available: {{ ride.fastPass }}</md-list-item>
+              <md-list-item class="md-inset">Active: {{ ride.active }}</md-list-item>
+            </md-list>
+
+            <md-chip class="md-accent" v-if="ride.fastPass">FP</md-chip>
+            <md-chip v-if="!ride.active">Not Active</md-chip>
 
             <md-button class="md-icon-button md-list-action" @click="favoriteClicked(ride)">
               <md-icon>star_border</md-icon>
@@ -137,6 +153,13 @@
     transform: translateX(0);
     max-height: auto;
   }
+  .md-empty-state {
+    max-width: 100% !important;
+  }
+  .md-list-item-text {
+    white-space: normal !important;
+    margin-right: 7px;
+  }
 </style>
 
 
@@ -152,7 +175,8 @@ export default {
     snackbarContent: '',
     waitTimesMinusFavorites: [],
     visiblePark: undefined,
-    showSortDialog: false
+    showSortDialog: false,
+    hasNotFetchedDataYet: true
   }),
   methods: {
     favoriteClicked: function(ride) {
@@ -178,6 +202,7 @@ export default {
       this.snackbarContent = 'need park name to get wait times'
       this.showSnackbar = true;
     }
+    this.hasNotFetchedDataYet = false;
   },
   computed: {
     ...mapState([
@@ -185,7 +210,8 @@ export default {
       'parkList',
       'favoriteRides',
       'currentPark',
-      'sortModel'
+      'sortModel',
+      'isLoading'
     ]),
   },
   watch: {
@@ -215,6 +241,12 @@ export default {
         this.waitTimesMinusFavorites = JSON.parse(JSON.stringify(waitTimesCopy))
       } else {
         this.waitTimesMinusFavorites = JSON.parse(JSON.stringify(this.waitTimes))
+      }
+    },
+    isLoading(newLoading, oldLoading) {
+      if (newLoading) {
+        this.snackbarContent = 'loading wait times...'
+        this.showSnackbar = true;
       }
     }
   }
