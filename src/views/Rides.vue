@@ -2,6 +2,8 @@
 
   <div class="rides-container">
 
+    <md-progress-bar md-mode="indeterminate" v-if="$wait.any"></md-progress-bar>
+
     <div>
       <div class="flex-title">
         <md-button @click="$router.push('/')"><md-icon class="md-primary">arrow_back</md-icon>&nbsp;&nbsp;Back to Parks</md-button>
@@ -34,7 +36,7 @@
     </md-dialog>
 
     <md-empty-state
-      v-if="isLoading"
+      v-if="$wait.any"
       md-rounded
       md-icon="access_time"
       md-label="Wait Some More"
@@ -42,7 +44,7 @@
     </md-empty-state>
 
     <md-empty-state
-      v-if="!hasNotFetchedDataYet && !isLoading && waitTimes.length == 0"
+      v-if="!$wait.any && waitTimes.length == 0"
       md-rounded
       md-icon="star"
       md-label="Congratulations!"
@@ -133,6 +135,24 @@
 </template>
 
 <style lang="scss">
+  .md-progress-bar {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  .md-empty-state {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    margin-top: 180px !important;
+  }
+  .rides-container {
+    min-height: calc(100% - 150px);
+  }
   .fav-list {
     overflow: hidden;
   }
@@ -155,6 +175,13 @@
   }
   .md-empty-state {
     max-width: 100% !important;
+    transition: all 300ms;
+  }
+  .md-empty-state-enter, .md-empty-state-leave-to {
+    opacity: 0;
+  }
+  .md-empty-state-leave, .md-empty-state-enter-to {
+    opacity: 1;
   }
   .md-list-item-text {
     white-space: normal !important;
@@ -176,7 +203,6 @@ export default {
     waitTimesMinusFavorites: [],
     visiblePark: undefined,
     showSortDialog: false,
-    hasNotFetchedDataYet: true
   }),
   methods: {
     favoriteClicked: function(ride) {
@@ -192,6 +218,7 @@ export default {
   mounted() {
     if (this.park) {
       // Load wait times for this park
+      this.$wait.start('loadWaitTimes')
       this.$store.dispatch('loadWaitTimes', { park: this.park })
 
       // Sometimes the user navigates to this page directly and we want the entire list for more details on a given park
@@ -202,7 +229,6 @@ export default {
       this.snackbarContent = 'need park name to get wait times'
       this.showSnackbar = true;
     }
-    this.hasNotFetchedDataYet = false;
   },
   computed: {
     ...mapState([
@@ -210,12 +236,12 @@ export default {
       'parkList',
       'favoriteRides',
       'currentPark',
-      'sortModel',
-      'isLoading'
+      'sortModel'
     ]),
   },
   watch: {
     waitTimes(newWaits, oldWaits) {
+      this.$wait.end('loadWaitTimes')
       console.log('wait times updated (view)')
       this.visiblePark = this.$store.state.parkList.find(park => park.id === this.park)
       this.$store.dispatch('setCurrentPark', { currentPark: this.visiblePark })
@@ -241,12 +267,6 @@ export default {
         this.waitTimesMinusFavorites = JSON.parse(JSON.stringify(waitTimesCopy))
       } else {
         this.waitTimesMinusFavorites = JSON.parse(JSON.stringify(this.waitTimes))
-      }
-    },
-    isLoading(newLoading, oldLoading) {
-      if (newLoading) {
-        this.snackbarContent = 'loading wait times...'
-        this.showSnackbar = true;
       }
     }
   }

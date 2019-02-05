@@ -13,7 +13,6 @@ export default new Vuex.Store({
     parkList: [],
     waitTimes: [],
     favoriteRides: {},
-    isLoading: false,
     currentPark: {
       id: undefined,
       name: undefined
@@ -67,16 +66,15 @@ export default new Vuex.Store({
 
       // Also sort the wait times
       state.waitTimes = [...orderList(state.waitTimes, state.sortModel)]
-    },
-    'SET_LOADING'(state, isLoading) {
-      state.isLoading = isLoading
     }
   },
   actions: {
     loadParkList( {commit} ) {
       console.log('Loading Park List for Environment: ' + process.env.NODE_ENV);
       if (process.env.NODE_ENV === 'development') {
-        commit('SET_PARK_LIST', sampleParkList)
+        setTimeout(() => {
+          commit('SET_PARK_LIST', sampleParkList)
+        }, 1000)
       } else {
         axios.get('/api/tplist').then(res => res.data).then(parkList => {
           commit('SET_PARK_LIST', parkList)
@@ -89,15 +87,14 @@ export default new Vuex.Store({
       const parkId = params.park;
       console.log('Loading wait times for parkId ' + parkId);
       if (process.env.NODE_ENV === 'development') {
-        commit('SET_WAIT_TIMES', sampleWaitTimes)
+        setTimeout(() => {
+          commit('SET_WAIT_TIMES', sampleWaitTimes)
+        }, 1000)
       } else {
-        commit('IS_LOADING', true)
         let params = { parkName: parkId };
         axios.get('/api/waits', { params: params }).then(res => res.data).then(waitTimes => {
           commit('SET_WAIT_TIMES', waitTimes)
-          commit('IS_LOADING', false)
         }).catch(err => {
-          commit('IS_LOADING', false)
           console.log('Could not get wait times for park ' + parkId + ': ', err)
         })
       }

@@ -1,5 +1,14 @@
 <template>
-  <div>
+  <div class="park-list-outer">
+    <md-progress-bar md-mode="indeterminate" v-if="$wait.any"></md-progress-bar>
+
+    <md-empty-state
+      v-if="$wait.any"
+      md-rounded
+      md-icon="access_time"
+      md-label="Wait Some More"
+      md-description="Seems ironic that you are waiting for wait times to load...">
+    </md-empty-state>
 
     <h1 class="headline">Select a park.</h1>
     
@@ -28,10 +37,20 @@
 </template>
 
 <style lang="scss">
+  .md-progress-bar {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+  .park-list-outer {
+    min-height: calc(100% - 150px);
+  }
   .park-list-container {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr))
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   }
   .park {
     width: 100%;
@@ -64,11 +83,17 @@ import { mapState } from 'vuex'
 export default {
   name: 'home',
   mounted() {
+    this.$wait.start('loadParkList')
     this.$store.dispatch('loadParkList')
   },
   computed: mapState([
     'parkList'
-  ])
+  ]),
+  watch: {
+    parkList(newParks, oldParks) {
+      this.$wait.end('loadParkList')
+    }
+  }
   // components: {
   //   HelloWorld
   // }
