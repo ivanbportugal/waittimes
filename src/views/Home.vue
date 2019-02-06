@@ -1,6 +1,5 @@
 <template>
   <div class="park-list-outer">
-    <md-progress-bar md-mode="indeterminate" v-if="$wait.any"></md-progress-bar>
 
     <md-empty-state
       v-if="$wait.any"
@@ -9,6 +8,8 @@
       md-label="Wait Some More"
       md-description="Seems ironic that you are waiting for wait times to load...">
     </md-empty-state>
+
+    <md-progress-bar md-mode="indeterminate" v-if="$wait.any"></md-progress-bar>
 
     <h1 class="headline">Select a park.</h1>
     

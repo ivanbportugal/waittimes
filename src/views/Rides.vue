@@ -2,8 +2,6 @@
 
   <div class="rides-container">
 
-    <md-progress-bar md-mode="indeterminate" v-if="$wait.any"></md-progress-bar>
-
     <div>
       <div class="flex-title">
         <md-button @click="$router.push('/')"><md-icon class="md-primary">arrow_back</md-icon>&nbsp;&nbsp;Back to Parks</md-button>
@@ -34,6 +32,8 @@
         <md-button class="md-primary" @click="showSortDialog = false; sortWaitTimes()">Close</md-button>
       </md-dialog-actions>
     </md-dialog>
+
+    <md-progress-bar md-mode="indeterminate" v-if="$wait.any"></md-progress-bar>
 
     <md-empty-state
       v-if="$wait.any"
