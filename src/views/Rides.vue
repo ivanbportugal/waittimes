@@ -149,6 +149,15 @@
     right: 0;
     z-index: 2;
     margin-top: 180px !important;
+    max-width: calc(100vw - 15px) !important;
+  }
+  @media all and (max-width: 380px) {
+    .md-list-item-container, .md-chip {
+      font-size: 12px !important;
+    }
+    .md-avatar {
+      font-size: 18px !important;
+    }
   }
   .rides-container {
     min-height: calc(100% - 150px);

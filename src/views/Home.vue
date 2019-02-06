@@ -45,6 +45,17 @@
     right: 0;
     z-index: 2;
   }
+  .md-empty-state {
+    max-width: calc(100vw - 15px) !important;
+  }
+  @media all and (max-width: 380px) {
+    .md-card-content, .md-button {
+      font-size: 12px !important;
+    }
+    .md-title {
+      font-size: 18px !important;
+    }
+  }
   .park-list-outer {
     min-height: calc(100% - 150px);
   }
@@ -55,6 +66,7 @@
   }
   .park {
     width: 100%;
+    max-width: calc(100vw - 15px);
     .md-card {
       height: 100%;
       .md-card-actions {
